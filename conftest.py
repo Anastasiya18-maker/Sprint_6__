@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def driver():
     firefox_options = Options()
     firefox_options.add_argument("--width=1240")

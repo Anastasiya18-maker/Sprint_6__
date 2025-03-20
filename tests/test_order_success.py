@@ -2,6 +2,7 @@ from pages.order_page import OrderPage
 import allure
 import pytest
 
+@allure.title("Тест успешного оформления заказа самоката через кнопки на лэндинге")
 @pytest.mark.parametrize('button', ['header_button', 'page_button'])
 def test_order_upp_success(driver, button):
     order_page = OrderPage(driver)
@@ -20,5 +21,9 @@ def test_order_upp_success(driver, button):
         order_page.pick_rental_period()
         order_page.click_on_element_color_black()
         order_page.fill_comment_field()
+        assert order_page.create_order_button_is_visible()
         order_page.click_on_element_create_order()
+        assert order_page.confirmn_order_button_is_visible()
         order_page.click_on_element_confirm_order_yes()
+        assert order_page.status_button_is_visible()
+

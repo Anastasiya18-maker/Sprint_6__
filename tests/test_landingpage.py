@@ -3,7 +3,7 @@ from data import LandingAnswers
 import allure
 import pytest
 
-
+@allure.title("Тестирование ответов на вопросы на лендинге")
 @pytest.mark.parametrize("question_num, expected_answer", LandingAnswers.ANSWERS.items())
 def test_landing_page(driver, question_num, expected_answer):
     landing_page = LandingPage(driver)

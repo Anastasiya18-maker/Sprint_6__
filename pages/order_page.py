@@ -40,16 +40,14 @@ class OrderPage(BasePage):
 
     @allure.step('Заполняем поля "Адрес"')
     def fill_adress_field(self):
-        person = Person()  # Создать объект Person
-        person.fill_adress_field()  # Вызывать функцию для генерации адреса
-        self.find_element_with_wait(Oder_page_locators.INPUT_ADRESS).send_keys(person.adress)
+        self.find_element_with_wait(Oder_page_locators.INPUT_ADRESS).send_keys(Person().fill_adress_field())
 
     @allure.step('В форме создания заказа выбираем станцию метро')
     def select_metro(self):
         self.click_on_element(Oder_page_locators.Metro_one)
         self.find_element_with_wait(Oder_page_locators.Metro_one).send_keys(Person.random_station)
         self.find_element_with_wait(Oder_page_locators.Metro_one).send_keys(Keys.DOWN, Keys.ENTER)
-        # return self
+
 
     @allure.step('Заполняем поля "Телефон"')
     def fill_phone_field(self):
@@ -75,9 +73,7 @@ class OrderPage(BasePage):
 
     @allure.step('Комментарий для курьера')
     def fill_comment_field(self) -> object:
-        person = Person()
-        person.fill_comment_field()
-        self.find_element_with_wait(Oder_page_locators.INPUT_COMMENT).send_keys(person.comment)
+        self.find_element_with_wait(Oder_page_locators.INPUT_COMMENT).send_keys(Person().fill_comment_field())
 
     @allure.step('Заказ')
     def click_on_element_create_order(self) -> object:
@@ -86,3 +82,15 @@ class OrderPage(BasePage):
     @allure.step('Кнопка заказа')
     def click_on_element_confirm_order_yes(self) -> object:
         self.click_on_element(Oder_page_locators.BUTTON_CONFIRM_ORDER_YES)
+
+    @allure.step('Проверка видимости кнопки создания заказа')
+    def create_order_button_is_visible(self):
+        return self.find_element_with_wait(Oder_page_locators.CREATE_ORDER)
+
+    @allure.step("Проверка видимости кнопки подтверждения заказа")
+    def confirmn_order_button_is_visible(self):
+        return self.find_element_with_wait(Oder_page_locators.BUTTON_CONFIRM_ORDER_YES)
+
+    @allure.step("Проверка видимости кнопки проверки статуса")
+    def status_button_is_visible(self):
+        return self.find_element_with_wait(Oder_page_locators.BUTTON_CHECK_STATUS)

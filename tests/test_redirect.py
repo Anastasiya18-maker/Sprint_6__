@@ -5,7 +5,7 @@ import allure
 
 
 
-
+@allure.title("Тест редиректа на главную страницу Я.Самокат при клике на Лого сервиса")
 def test_LOGO_REDIRECT(driver):
     order_page = LandingPage(driver)
     order_page.open_url()
@@ -17,7 +17,7 @@ def test_LOGO_REDIRECT(driver):
         logo_page.click_on_LOGO_SCOOTER()
         assert logo_page.get_current_url() == 'https://qa-scooter.praktikum-services.ru/'
 
-
+@allure.title("Тест редиректа на Яндекс Дзен при клике на логотип Яндекса в хедере")
 def test_LOGO_REDIRECT_DZEN(driver):
     order_page = LandingPage(driver)
     order_page.open_url()
@@ -27,9 +27,9 @@ def test_LOGO_REDIRECT_DZEN(driver):
         redirect_dzen_test.click_on_LOGO_YANDEX()
 
         # Переключить на новую вкладку:
-        handles = driver.window_handles
+        handles = redirect_dzen_test.windows_switch()
         assert len(handles) == 2
-        driver.switch_to.window(handles[1])
+        redirect_dzen_test.switch_to_window(handles)
         redirect_dzen_test.find_element_find_button()
         final_url = redirect_dzen_test.get_current_url()
         assert 'dzen' in final_url

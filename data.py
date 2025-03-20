@@ -18,6 +18,8 @@ class LandingAnswers:
         7: 'Да, обязательно. Всем самокатов! И Москве, и Московской области.'
     }
 
+
+
 class Person:
     generator = RussianNames()
     full_name = generator.get_person()
@@ -43,12 +45,12 @@ class Person:
         street = random.choice(current_street_name)
         house = random.randint(1, 100)
         flat = random.randint(1, 100)
-        self.adress = f"Москва, {street}, {house}, {flat}"
+        return f"Москва, {street}, {house}, {flat}"
 
     def fill_comment_field(self):
         current_words = ['Каждый', 'охотник', 'желает', 'знать', 'где', 'живет', 'фазан']
         words = random.choice(current_words)
         numbers = random.randint(100, 1000)
-        self.comment =f"Комментарий, {words}, {numbers}"
+        return f"Комментарий, {words}, {numbers}"
 
 

@@ -26,11 +26,11 @@ class BasePage:
             self.wait.until(expected_conditions.invisibility_of_element(locator2))
         return self.wait.until(expected_conditions.visibility_of_element_located(locator1))
 
-    def click_on_element(self, locator1, locator2 = None):
+    def click_on_element(self, locator1):
         element = self.find_element_with_wait(locator1)
         element.click()
 
-    def get_text_from_element(self, locator1, locator2 = None):
+    def get_text_from_element(self, locator1):
         element = self.find_element_with_wait(locator1)
         return element.text
 
@@ -41,3 +41,12 @@ class BasePage:
 
     def get_current_url(self):
         return self.driver.current_url
+
+    def is_visible(self, locator):
+        return self.driver.find_element(locator).is_displayed()
+
+    def windows_switch(self):
+        return self.driver.window_handles
+
+    def switch_to_window(self, handles):
+        self.driver.switch_to.window(handles[1])
