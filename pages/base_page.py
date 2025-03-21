@@ -50,3 +50,6 @@ class BasePage:
 
     def switch_to_window(self, handles):
         self.driver.switch_to.window(handles[1])
+
+    def scroll_to_questions(self):
+        self.driver.execute_script('window.scrollTo(0,document.body.scrollHeight);')

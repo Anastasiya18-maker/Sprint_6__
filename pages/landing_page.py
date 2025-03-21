@@ -11,7 +11,7 @@ class LandingPage(BasePage):
 
     @allure.step('Прокрутить страницу до блока вопросов')
     def scroll_to_questions(self):
-        self.driver.execute_script('window.scrollTo(0,document.body.scrollHeight);')
+        BasePage.scroll_to_questions(self)
 
     @allure.step('Прокрутить страницу до конкретного вопроса')
     def scroll_to_question(self, i):

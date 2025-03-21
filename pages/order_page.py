@@ -39,8 +39,8 @@ class OrderPage(BasePage):
         self.find_element_with_wait(Oder_page_locators.INPUT_SURNAME).send_keys(Person.random_surname)
 
     @allure.step('Заполняем поля "Адрес"')
-    def fill_adress_field(self):
-        self.find_element_with_wait(Oder_page_locators.INPUT_ADRESS).send_keys(Person().fill_adress_field())
+    def fill_adress_field(self, person_data):
+        self.find_element_with_wait(Oder_page_locators.INPUT_ADRESS).send_keys(person_data)
 
     @allure.step('В форме создания заказа выбираем станцию метро')
     def select_metro(self):
@@ -72,8 +72,8 @@ class OrderPage(BasePage):
         self.click_on_element(Oder_page_locators.CHECKBOX_COLOUR)
 
     @allure.step('Комментарий для курьера')
-    def fill_comment_field(self) -> object:
-        self.find_element_with_wait(Oder_page_locators.INPUT_COMMENT).send_keys(Person().fill_comment_field())
+    def fill_comment_field(self, person_comment) -> object:
+        self.find_element_with_wait(Oder_page_locators.INPUT_COMMENT).send_keys(person_comment)
 
     @allure.step('Заказ')
     def click_on_element_create_order(self) -> object:

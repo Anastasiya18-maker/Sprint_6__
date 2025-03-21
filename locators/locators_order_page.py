@@ -13,6 +13,7 @@ class Oder_page_locators:
     INPUT_DATE = (By.CSS_SELECTOR, "input[placeholder='* Когда привезти самокат']")
     SELECTED_DATE = (By.XPATH,
                      f"//div[@class='react-datepicker__day react-datepicker__day--00{Person.random_date} react-datepicker__day--selected']")
+
     RENTAL_PERIOD = [By.CSS_SELECTOR, 'div[class="Dropdown-root"]']
     Dropdown_RENTAL_PERIOD = (By.XPATH, f'//div[text()="{Person.random_period}"]')
     CHECKBOX_COLOUR = (By.XPATH, f'//input[@id="{Person.random_color}"]')
